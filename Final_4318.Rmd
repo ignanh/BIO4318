@@ -1,0 +1,149 @@
+---
+title: "Factores asociados a la erosión de los suelos de Chile entre el periodo 2001 - 2018"
+author: "Ignacio Nuñez-Hidalgo"
+date: "06-01-2021"
+output: 
+  
+  bookdown::pdf_document2:
+    latex_engine: lualatex
+    fig.caption: yes
+    toc: no
+    extra_dependencies: ["float"]
+bibliography: Biblio.bib
+---
+
+```{r setup, echo=F,warning=F,include=F,cache=T}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.pos = "H", out.extra = "")
+
+if(!require(pacman)){install.packages("pacman")}
+pacman::p_load(visreg,mgcViz,lubridate,ggplot2,tidyverse,purrr,ggpubr,rstatix,reshape,tinytex,float,mgcv,MuMIn,broom,corrplot,RColorBrewer,kableExtra,caret)
+
+USLE_GAMm<-read.csv("USLE_Forecast_BD_v3.csv")  
+USLE_GAMm_mediterranean<-USLE_GAMm %>% filter(L1=="Mediterranean")
+
+
+set.seed(600);gam_medit<-gam(USLE ~ Year + 
+                 te(Year,R)+
+                 te(Year,K)+
+                 te(Year,LS)+
+                 te(Year,C),  
+               data = USLE_GAMm_mediterranean);saveRDS(gam_medit,"gam_medit.rds")
+
+
+options(na.action = "na.fail")
+
+set.seed(600);best_mediterranean<-dredge(gam_medit,rank = "AIC")
+set.seed(600);BestModel_medit <- get.models(best_mediterranean, 1)[[1]];saveRDS(BestModel_medit,"Mejor_GAM_Medit_fin.rds")
+
+```
+
+# Resumen
+
+Los suelos son un legado biológico de importancia incalculable para la diversidad biológica en la tierra, al ser una zona que permite el ciclado de nutrientes y energía entre otros sistemas atmosféricos importantes, cómo la atmosfera, la hidrosfera y la litósfera. El uso intensivo de los suelos por parte del hombre ha provocado que estos se degraden, poniendo en riesgo la capacidad de estos para sustentar actividades fundamentales para el hombre como lo es la agricultura. En efecto, más del 30% de los suelos del mundo se encuentran severamente degradados, siendo la principal causa la erosión asociada a la sobreexplotación y el manejo inadecuado de los suelos. De continuar esta tendencia, se espera que para el año 2050, cerca del 90% de los suelos del mundo se encuentren severamente degradados, por lo que resulta urgente tomar medidas, no solo para identificar aquellas zonas más propensas a degradarse sino también para adoptar estrategias de manejo adecuadas para reducir su degradación futura. Este problema es más intenso en regiones como América latina, y en países cómo Chile, en donde los recursos disponibles para combatir la degradación de los suelos son limitados, a la vez que la desigualdad social y económica favorecen la conversión de usos de suelo que aceleran el fenómeno. Bajo este escenario, el uso de metodologías que permitan analizar y cuantificar de manera espacialmente explícita las zonas más propensas a perder suelo, al mismo tiempo que se identifican los factores asociados a dicha pérdida pueden ser particularmente útiles. Entre todas ellas, destaca la Ecuación Universal de pérdida del suelo (USLE), que se basa en la erosión hídrica provocada por la remoción o el uso inadecuado del terreno. Concretamente, se propone la estimación de las tasas de erosión a mediano plazo, abarcando el periodo entre los años 2001 a 2018 en todo Chile, para determinar: a) la tasa anual de erosión de los suelos en Chile continental por zona climática y uso de suelos; y b) determinar los factores de erosión más vinculados a la pérdida de suelos a una escala anual y por zona climática.
+
+Palabras clave: Suelos, Degradación de los suelos, Erosión hídrica, Cambio global, Cambio de usos de suelos. 
+
+
+# Introducción
+
+La degradación de los suelos es una de las principales consecuencias ambientales ligadas al cambio global [@gwapedza2018spatial], impulsada por el manejo inadecuado y el cambio de uso de suelos (LULCC) [@cebecauer2008consequences; @botelho2018use; @borrelli2020land]. Los suelos son considerados un legado biológico y un recurso no renovable, porque toman miles de años en formarse, pero mucho menos tiempo en degradarse [@doran1997defining; @doran2002soil; @tosic2011assessment]. La degradación de los suelos puede ocurrir de múltiples maneras, siendo la erosión hídrica una de las más severas; que involucra el lavado y remoción del suelo a causa de las precipitaciones [@lal2015restoring]. Puede ocurrir naturalmente o verse inducido por el LULCC al reemplazarse la vegetación natural que protege los suelos por usos agrícolas, forestales, ganaderos, mineros y urbanos [@tosic2011assessment; @kisan2016remote; @sanderman2017soil]. Este problema tiene severas implicancias para la seguridad alimentaria y el sustento de los ecosistemas terrestres y su biodiversidad [@asadzadeh2015soil; @karlen2015soil; @keesstra2016significance; @robinson2017soil], siendo los suelos superficiales los más susceptibles a la erosión y a la vez, los más biodiversos [@mahapatra2018assessment; @trevino2019stratification].
+Los efectos de la erosión de los suelos tienen un efecto en cascada y son acumulables en el tiempo [@lal2015restoring]. La erosión prolongada reduce la fertilidad de los suelos [@avanzi2013spatial;@lal2015restoring;@lal2016soil], a la vez que vacía  el pool de carbono, afectando negativamente a la capacidad de fijación y disponibilidad de nutrientes [@reeves1997role; @menta2012soil], y a la capacidad de estos para sustentar las comunidades biológicas [@borrelli2017assessment; @khatoon2017role]. También, la erosión de los suelos tiene implicancias sobre la disponibilidad de agua, reduciendo su disponibilidad y calidad, retroalimentando la desertificación de este [@halecki2018loss].
+
+Los últimos cálculos estiman que más de un tercio de los suelos del mundo ya se encuentran severamente degradados a causa de la erosión [@montanarella2015agricultural; @rojas2016healthy; @lopez2019estimation] y continúan degradándose a una tasa mundial anual de 35.9 Pg/yr-1 [@borrelli2017assessment].  A fines del siglo XX esta pérdida anual ya equivalía a más de US$ 400 billones sólo en productividad agrícola, equivalente al 30% de los suelos del mundo [@myers1984gaia; @pimentel1995environmental]. De continuar esta tendencia, se espera que para el año 2050 cerca del 90% de los suelos del mundo se encuentren severamente degradados debido a la sobreexplotación y la erosión [@montanarella2015status], lo que podría implicar una gran presión a la extensión y mantenimiento de las áreas naturales, que se verán amenazadas si a la vez consideramos que para el mismo periodo será necesario aumentar la producción global de alimentos en más de un 60% respecto a los niveles actuales [@rojas2016healthy].
+El problema de erosión de suelos ocurre a escala global, pero es aún más acentuado en regiones en vías de desarrollo [@eisenberg2020quantification] como América Latina, en donde los recursos disponibles para manejar los suelos son más escasos que en países desarrollados, y en donde suele primar una visión extractivista de los recursos naturales, que en conjunto a una mayor desigualdad socioeconómica respecto a países desarrollados puede promover el LULCC por sobre la conservación de la biodiversidad [@southgate1992promoting; @ananda2003soil; @borrelli2017assessment].
+
+En Latinoamérica, países como Chile son extremadamente sensibles a la erosión de los suelos. Chile tiene un legado histórico muy arraigado en el extractivismo y la explotación económica de sus recursos naturales en desmedro de la conservación biológica [@altieri1999ecological; @barahona2019beyond], que en conjunción a las características topográficas accidentadas del territorio facilitan la erosión de los suelos [@gaspari2009estimacion; @borrelli2017assessment]. Chile a fines del siglo XX ya contaba con regiones que tenían más del 75% de sus suelos disponibles con grados de erosión severos o muy severos  [@Lagos1994erosion], tendencia que en el siglo XXI se ha visto empeorada por la presencia y fomento de la industria forestal, la cual se localiza en suelos ya degradados [@miranda2017native], y contribuye a la desecación y erosión del suelo posterior a las talas [@gayoso1996costos; @da2014predicting; @silva2016soil]; o al aumento de áreas cultivadas en laderas escarpadas, favoreciendo el lavado de nutrientes y consecuente aumento de la sedimentación y la eutrofización en ríos y lagos [@gaspari2009estimacion; @eisenberg2020quantification].
+
+Una de las formas más efectivas para combatir la erosión de los suelos, está en poder cuantificar cuanto y de qué forma estos se están erosionando, con tal de poder proponer acciones de recuperación posteriores acorde a la severidad de la erosión [@erdogan2007use; @gwapedza2018spatial], siendo la modelación una de las vías más robustas y estandarizadas [@vagaria2015estimation; @borrelli2020land]. Una metodología clásica y ampliamente validada corresponde a la Ecuación Universal de pérdida de suelos (USLE), implementada por la FDA de Estados unidos por [@wischmeier1978predicting]. La implementación de este protocolo históricamente se ha visto limitado a cuencas hidrográficas, al ser extremadamente costoso y dependiente de la toma de datos en terreno, volviéndose inalcanzable para el presupuesto de países en vías de desarrollo  [@eisenberg2020quantification]. Sin embargo, con el avance tecnológico y la mayor disponibilidad de las herramientas basadas en la percepción remota y el análisis de imágenes satelitales, es que se ha hecho posible el escalamiento de este tipo de inventarios incluso a escala mundial [@borrelli2017assessment; @borrelli2020land]. El control y manejo de suelos en Chile tiene un sesgo hacía el mundo agrícola y productivo, descuidando el enfoque hacia la conservación de suelos naturales, por lo que resultaría extremadamente valioso poder generar evaluaciones con un enfoque más general y sistémico. 
+
+En este estudio se propone evaluar la dinámica nacional de la pérdida de suelos por erosión hídrica, al ser de importancia vital para un país como Chile; mediante la cuantificación de la tasa anual nacional de erosión a través de la aplicación de la Ecuación Universal de pérdida del suelo (USLE), para una ventana temporal de 17 años (2001-2018), identificando de manera espacialmente explícita los usos de suelo que más degradan, su naturaleza, y sus tasas individuales de erosión, con tal de sugerir que medidas de manejo debiesen ser aplicadas sobre dichos suelos para disminuir sus tasas de erosión anuales y consecuente degradación. Además se identificará que variables asociadas a la ecuación USLE se encuentran determinando la variación en las tasas de erosión anuales, para cada uno de los años estudiados, con la finalidad de identificar los drivers responsables píxel a píxel.
+
+Sin embargo, para la realización de este informe, se desarrollará únicamente el último punto, que da cuenta de los drivers asociados a la erosión. Y u´nicamente en una zona climatica (zona mediterránea)
+
+# Metodología
+
+Chile tiene una de las mayores diversidades climáticas, con la presencia de al menos cuatro de los cinco tipos climáticos dominantes de la clasificación de Köppen – Geiger [@kottek2006world]. En paralelo, los suelos y las tasas de erosión de ellos se encuentran determinados por las variaciones en precipitación y temperatura [@orgiazzi2016global], por lo que es esperable que la erosión sea distinta según tipo de clima. Para sobrellevar esto, se dividió el territorio de Chile continental en cuatro zonas climáticas: Árida, Mediterránea, Templada y Fría según la clasificación climática de Köppen calibrada para Chile [@sarricolea2017climatic], la cual fue utilizada en todas las escalas de análisis (Fig S1). Se trabajó únicamente con zonas que tuviesen cobertura vegetal en al menos uno de los años estudiados, con la finalidad de no considerar las tasas de erosión en zonas de alta montaña o áreas permanentemente desprovistas de vegetación. Para lograr esto, se enmascararon las zonas que tuviesen un índice de vegetación normalizado (NDVI) menor a 0.2 utilizando Sistemas de información Geográfica (SIG). El índice NDVI da cuenta del contenido de clorofila en un píxel dado y se maneja como proxy a la cobertura vegetal [@huete2002overview; @huete2004remote]. Las imágenes NDVI fueron extraídas desde imágenes MODIS MOD13Q1 a 250 m de resolución (Didan 2015) mediante Google Earth engine (GEE), un supercomputador alojado en la nube diseñado para análisis geo-científicos espaciales multitemporales [@gorelick2017google].
+
+Para cuantificar la erosión tanto anual como de todo el periodo, se adaptó la Ecuación Universal de Erosión del Suelo (USLE) propuesta originalmente por [@wischmeier1978predicting]. La ecuación USLE permite estimar la tasa anual de erosión provocada por la interacción negativa entre la lluvia, el tipo de suelo, la pendiente y la cubierta vegetal, las cuales son variables en el tiempo y espacio geográfico [@bayramov2019quantitative], tal que:
+
+A = R * K * LS * C * P (Ecuación 1)
+
+Donde A equivale a la pérdida de suelo expresada en t/ha/año, R al factor de erosividad de la lluvia, K al factor de erosionabilidad del suelo, LS a factores topográficos, y P a las prácticas de manejo que se hayan llevado a cabo para combatir la erosión de los suelos. Cada uno de estos factores se descompone en ecuaciones individuales e independientes que permiten estimar la perdida de suelos en los primeros 30 cm de profundidad. Los factores fueron estimados para la totalidad del territorio de Chile continental a una resolución espacial de 250 m, para cada uno de los 18 años del periodo 2001 – 2018 utilizando SIG. 
+
+## Factor R
+El factor R o de erosividad, determina la facultad intrínseca de la lluvia de erosionar un área específica  y será dependiente de la cantidad de precipitaciones acumuladas en un intervalo temporal determinado [@wischmeier1978predicting;@lal1990soil]. La forma tradicional de calcular este factor involucra la existencia de datos de precipitación diarios [véase @aguirre2017improving; @halecki2018loss], los cuales pueden ser difíciles de conseguir o ser inexistentes en regiones montañosas y de difícil acceso [@yue2020effect]. Afortunadamente existen formas de estimar este factor con la utilización de variables ambientales poxys a la precipitación acumulada. Para estimar este factor se utilizó la ecuación basada en el índice de Fournier aplicado en [@bayramov2019quantitative; @bonilla2011rainfall] tal que: 
+
+R = 0.028*P^1.534 (Ecuación 2)
+
+Donde R equivale al factor de erosionabilidad del suelo (MJ / mm / ha / yr), P equivale a la precipitación media anual (mm), y 0.028 y 1.534 son parámetros ajustados para Chile. Los datos de precipitación fueron obtenidos a partir de datos mensuales de precipitación para el periodo 2001 a 2018 convertidos a anuales (suma 12 meses = Precipitación media anual) de Worlclim 2 [@fick2017worldclim], a una resolución espacial nativa de 2.5 km, la que fue posteriormente resampleada bilinealmente hasta 250m.
+
+
+## Factor K
+El factor K o de erosionabilidad representa las propiedades del suelo a ser erosionado por la lluvia, y opera bajo la lógica de que si las presiones son mayores que la capacidad intrínseca del suelo a resistir la erosión, entonces el suelo se degradará [@da2014predicting]. Al igual que con el factor R, existen múltiples formas de obtener el factor K. Los mecanismos clásicos involucraban la realización de pedones que dieran cuenta del contenido de materia orgánica, la textura y la permeabilidad del suelo [@wischmeier1978predicting], sin embargo, actualmente dichos parámetros pueden estimarse desde el modelo EPIC de [@sharpley1990epic] modificados por [@yang2018integrating] tal que:
+
+K = 0.1317*(0.2+0.3*〖e[^(-0.0256*SAN(1-SIL/100) )]*(SIL/(CLA+SIL))^0.3 )*[1-(0.25*TOC)/(TOC+e^((3.72-2.95*TOC) ) )]*[1-(0.7*SN1)/(SN1+e^(22.9*SN1-5.51) )] (Ecuación 3)
+
+Donde K corresponde a la erosionabilidad del suelo (t / ha / MJ-1 / mm-1), SAN al contenido de arena (%), SIL al contenido de limo (%), CLA al contenido de arcilla (%), TOC al contenido de carbono orgánico (%), SN1 = 1 – SAN/100 y e = exp. Tanto el contenido de Arena, limo y Arcilla fueron obtenidos desde Soilgrids 250 [@hengl2017soilgrids250m], mientras que el contenido de carbono orgánico fue obtenido desde (Núñez-Hidalgo in prep). 
+
+## Factor LS
+El factor LS o factor topográfico representa la influencia de la topografía en la erosión de los suelos, y depende de la variación del ángulo y longitud de la pendiente. Este factor fue estimado desde SAGA-GIS, utilizando el método de [@desmet1996gis], especialmente calibrado para zonas con topografía compleja tal que:
+
+LS = (A + D^2)^m+1 – A^m+1) / (X^m * D^m+2 * 22.13^m) (Ecuación 4)
+
+Donde LS corresponde al factor topográfico (adimensional), A equivale a un modelo de acumulación de flujo o Flow accumulation, D al tamaño de píxel (250m), X = sin α + cos α, con α equivalente al ángulo de exposición de la pendiente en grados o Aspect, y m = β / β +1, con β = (((sin Θ / 0.0896)) / ((0.56+3*(sin Θ)*0.8)), siendo Θ equivalente a la pendiente en grados o Slope. Tanto las variables de exposición como las pendientes fueron obtenidas mediante GEE.   
+
+## Factor C
+El factor C o de cobertura vegetal refleja la influencia de la vegetación en disminuir o prevenir la erosión hídrica, y se sustenta en que tanto las raíces como la cobertura vegetal disminuyen el lavado de las superficies, aumentando la estructura general del suelo [@borrelli2017assessment; @borrelli2020land] Para obtener el factor se adaptó el modelo de [@almagro2019improving; @sone2019water] tal que:
+
+
+C = (-NDVI + 1) / 2 (Ecuación 5)
+
+
+Donde C equivale al factor de cobertura vegetal (adimensional), NDVI al Índice de Vegetación Normalizado y 0.1, 1 y 2 a factores de ajuste. Para obtener los índices se trabajó con las medias anuales de imágenes MODIS MOD13Q1 a 250 m de resolución [@didan2015mod13q1] procesadas en GEE. 
+
+## Factor P
+El factor P se encuentra asociado a las prácticas de manejo in-situ que se estén efectuando sobre un área geográfica para reducir la erosión hídrica [@bayramov2019quantitative], pudiendo oscilar entre valores de 0 a 1, donde 0 equivale a prácticas extremadamente eficientes y 1 a la ausencia de prácticas. Dada la extensión geográfica y temporal de este estudio, y al desconocimiento de prácticas de manejo y sus posibles localizaciones se asumirá un escenario pesimista para este factor, el cual será equivalente a 1 (inacción) para todo Chile [basado en @bonilla2010water;@pradhan2012soil; @asadzadeh2015soil; @aguirre2017improving; @bayramov2019quantitative].
+
+
+## Análisis estadistico
+Para analizar como los factores que componen al modelo USLE se encuentran afectando las tasas anuales de erosión (ton / ha / año), se generaron Modelos Aditivos Generalizados (GAM) para extraer las tasas de aporte a la erosión anual. Para generar los modelos se generaron  2500 puntos aleatorios para cada año y tipo de clima (en este caso meditérraneo), a los que se les extrajo los valores de cada USLE (covariable) y de los factores R, K, LS y C (factores), usando los años como variable de relación. Los modelos fueron generados mediante la librería mgcv [@wood2001mgcv], para seleccionar el mejor candidato de modelos se utilizo el criterio de seleccion de Akaike y la libreria MuMin [@barton2015package] en R. Se analizó la significancia estadística de las relaciones utilizando un p-valor < 0.05.
+
+
+
+
+# Resultados
+
+## Visualización de datos
+
+Las bases de datos no presentan un patron espacial aparente, especialmente entre los factores R, K, LS y C versus USLE (Fig \@ref(fig:Fig1)). De todas ellas únicamente el factor LS presenta una correlación no paramétrica alta con el índice de erosión, llegando a un índice de correlacion de 0.9 (Fig \@ref(fig:Fig2)).  
+
+```{r Fig1,echo=F,warning=F,include=T, fig.cap="Dispersión de los datos"}
+
+
+pairs(USLE_GAMm_mediterranean[3:7], lower.panel = NULL, col=USLE_GAMm_mediterranean$USLE) 
+```
+
+```{r Fig2,echo=F,warning=F,include=T, fig.cap="Panel de correlación de los datos"}
+col <- colorRampPalette(c("#BB4444", "#EE9988", "#FFFFFF", "#77AADD", "#4477AA"))
+corrplot(cor(USLE_GAMm_mediterranean[3:7],method = "spearman"),type = "lower",tl.col = "gray",bg="white",method="color", col=col(200),
+         addCoef.col = "black")
+```
+
+
+Se consiguieron modelos con un ajuste moderado (r=`r round(digits = 3, summary(BestModel_medit)$r.sq)`), dado por la alta dispersión de los datos de erosión. El AIC resultante del mejor modelo correspondio a `r round(digits = 3,glance(BestModel_medit)$AIC)` siendo el modelo 16 el mejor candidato  (Tabla  \@ref(table:Tabla1)
+
+```{r Tabla1, echo=F,warning=F,include=T, table.cap= "Estadísticos del mejor modelo"}
+
+knitr::opts_chunk$set(fig.pos = "H", out.extra = "")
+
+
+best_mediterranean %>% kable(caption = "Estadísticos del mejor modelo") %>% kable_styling(bootstrap_options = c("stripped","hover"))
+
+```
+
+
+
+# Conclusiones / Discusión
+
+# Bibliografía
