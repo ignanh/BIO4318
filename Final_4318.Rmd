@@ -16,8 +16,25 @@ bibliography: Biblio.bib
 knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_chunk$set(fig.pos = "H", out.extra = "")
 
-if(!require(pacman)){install.packages("pacman")}
-pacman::p_load(visreg,mgcViz,lubridate,ggplot2,tidyverse,purrr,ggpubr,rstatix,reshape,tinytex,float,mgcv,MuMIn,broom,corrplot,RColorBrewer,kableExtra,caret)
+if(!require(pacman)){install.packages("pacman")};library(pacman)
+if(!require(visreg)){install.packages("visreg")};library(visreg)
+if(!require(mgcViz)){install.packages("mgcViz")};library(mgcViz)
+if(!require(lubridate)){install.packages("lubridate")};library(lubridate)
+if(!require(ggplot2)){install.packages("ggplot2")};library(ggplot2)
+if(!require(tidyverse)){install.packages("tidyverse")};library(tidyverse)
+if(!require(purrr)){install.packages("purrr")};library(purrr)
+if(!require(ggpubr)){install.packages("ggpubr")};library(ggpubr)
+if(!require(float)){install.packages("float")};library(float)
+if(!require(mgcv)){install.packages("mgcv")};library(mgcv)
+if(!require(MuMIn)){install.packages("MuMIn")};library(MuMIn)
+if(!require(corrplot)){install.packages("corrplot")};library(corrplot)
+if(!require(RColorBrewer)){install.packages("RColorBrewer")};library(RColorBrewer)
+if(!require(kableExtra)){install.packages("kableExtra")};library(kableExtra)
+if(!require(tinytex)){install.packages("tinytex")};library(tinytex)
+if(!require(lubridate)){install.packages("lubridate")};library(lubridate)
+
+
+
 
 USLE_GAMm<-read.csv("USLE_Forecast_BD_v3.csv")  
 USLE_GAMm_mediterranean<-USLE_GAMm %>% filter(L1=="Mediterranean")
@@ -33,8 +50,8 @@ set.seed(600);gam_medit<-gam(USLE ~ Year +
 
 options(na.action = "na.fail")
 
-set.seed(600);best_mediterranean<-dredge(gam_medit,rank = "AIC")
-set.seed(600);BestModel_medit <- get.models(best_mediterranean, 1)[[1]];saveRDS(BestModel_medit,"Mejor_GAM_Medit_fin.rds")
+best_mediterranean<-dredge(gam_medit,rank = "AIC")
+BestModel_medit <- get.models(best_mediterranean, 1)[[1]];saveRDS(BestModel_medit,"Mejor_GAM_Medit_fin.rds")
 
 ```
 
@@ -116,7 +133,7 @@ Para analizar como los factores que componen al modelo USLE se encuentran afecta
 
 ## Visualización de datos
 
-Las bases de datos no presentan un patron espacial aparente, especialmente entre los factores R, K, LS y C versus USLE (Fig \@ref(fig:Fig1)). De todas ellas únicamente el factor LS presenta una correlación no paramétrica alta con el índice de erosión, llegando a un índice de correlacion de 0.9 (Fig \@ref(fig:Fig2)).  
+Las bases de datos no presentan un patrón espacial aparente, especialmente entre los factores R, K, LS y C versus USLE (Fig \@ref(fig:Fig1)). De todas ellas únicamente el factor LS presenta una correlación no paramétrica alta con el índice de erosión, llegando a un índice de correlación de 0.9 (Fig \@ref(fig:Fig2)).  
 
 ```{r Fig1,echo=F,warning=F,include=T, fig.cap="Dispersión de los datos"}
 
@@ -126,24 +143,95 @@ pairs(USLE_GAMm_mediterranean[3:7], lower.panel = NULL, col=USLE_GAMm_mediterran
 
 ```{r Fig2,echo=F,warning=F,include=T, fig.cap="Panel de correlación de los datos"}
 col <- colorRampPalette(c("#BB4444", "#EE9988", "#FFFFFF", "#77AADD", "#4477AA"))
-corrplot(cor(USLE_GAMm_mediterranean[3:7],method = "spearman"),type = "lower",tl.col = "gray",bg="white",method="color", col=col(200),
+corrplot::corrplot(cor(USLE_GAMm_mediterranean[3:7],method = "spearman"),type = "lower",tl.col = "gray",bg="white",method="color", col=col(200),
          addCoef.col = "black")
 ```
 
-
-Se consiguieron modelos con un ajuste moderado (r=`r round(digits = 3, summary(BestModel_medit)$r.sq)`), dado por la alta dispersión de los datos de erosión. El AIC resultante del mejor modelo correspondio a `r round(digits = 3,glance(BestModel_medit)$AIC)` siendo el modelo 16 el mejor candidato  (Tabla  \@ref(table:Tabla1)
-
 ```{r Tabla1, echo=F,warning=F,include=T, table.cap= "Estadísticos del mejor modelo"}
+library(tidyverse)
+library(kableExtra)
 
 knitr::opts_chunk$set(fig.pos = "H", out.extra = "")
 
 
-best_mediterranean %>% kable(caption = "Estadísticos del mejor modelo") %>% kable_styling(bootstrap_options = c("stripped","hover"))
+best_mediterranean %>% kable(caption = "Estadísticos del mejor modelo",align = "l") %>% kable_styling(bootstrap_options = c("stripped","hover"),full_width = F)
+
+```
+
+Se obtuvieron modelos con un ajuste moderado (r=0.633), dado por la alta dispersión de los datos de erosión. El AIC resultante del mejor modelo correspondió a `r round(digits = 3,broom::glance(BestModel_medit)$AIC)` siendo el modelo 16 el mejor candidato  (Tabla  \@ref(table:Tabla1).
+
+## Contribución de los factores a la erosión de los suelos
+
+La contribución de cada factor tiende a presentar patrones heterogéneos. El factor R (intensidad en las precipitaciones) tiene una mayor contribución hacia las tasas de erosión en el periodo inicial (aprox año 2001), central (aprox años 2009 - 2010) y final (aprox año 2018), la cual para el caso del periodo central se concentra hacia valores moderados a altos del factor R (Fig \@ref(fig:Fig3)). En el caso del factor K (tipo de suelo), se aprecia un patrón divergente, con mayores aportes hacía el inicio y final del periodo (aprox año 2001 y año 2018), el cual se ve incrementado a altos valores del factor, particularmente en el inicio del periodo, que estarían dando cuenta de zonas altamente erosionables (Fig \@ref(fig:Fig4)). Esto también se aprecia para el factor LS (topografía), las zonas más escarpadas al parecer tendrían un mayor riesgo a erosionarse en los primeros y últimos años del periodo (aprox año 2001 y año 2018), con especial intensidad en los primeros años (Fig \@ref(fig:Fig5)). Finalmente, el factor C (cobertura vegetal) presenta un patrón similar a los factores K y LS, aunque menos pronunciado, donde el aporte del factor a la erosión de los suelos estaría siendo mayor en el periodo inicial y final, sin una preferencia marcada hacia zonas con mayor o menos cobertura aparente (Fig \@ref(fig:Fig6)).
+
+
+
+
+
+```{r Fig3,echo=F,warning=F,include=T, fig.cap="Contribución del factor R a la erosión de los suelos"}
+
+mgcv::vis.gam(BestModel_medit,
+        view = c("Year","R"),
+        plot.type = "persp" ,
+        theta=45,
+        phi=45,
+        color = "gray",
+        type = "response")
 
 ```
 
 
+```{r Fig4,echo=F,warning=F,include=T, fig.cap="Contribución del factor K a la erosión de los suelos"}
+
+mgcv::vis.gam(BestModel_medit,
+        view = c("Year","K"),
+        plot.type = "persp" ,
+        theta=45,
+        phi=45,
+        color = "gray",
+        type = "response")
+
+
+```
+
+```{r Fig5,echo=F,warning=F,include=T, fig.cap="Contribución del factor LS a la erosión de los suelos"}
+
+
+mgcv::vis.gam(BestModel_medit,
+        view = c("Year","LS"),
+        plot.type = "persp" ,
+        theta=45,
+        phi=45,
+        color = "gray",
+        type = "response")
+
+
+```
+
+```{r Fig6,echo=F,warning=F,include=T, fig.cap="Contribución del factor C a la erosión de los suelos"}
+
+
+
+mgcv::vis.gam(BestModel_medit,
+        view = c("Year","C"),
+        plot.type = "persp" ,
+        theta=45,
+        phi=45,
+        color = "gray",
+        type = "response")
+
+```
 
 # Conclusiones / Discusión
+
+Se pudo determinar que la tasa potencial de erosión se encuentra afectada de manera heterogénea por los factores que la componen, variando estos en intensidad y contribución según el año analizado.
+
+Por otro lado, algunos patrones espaciales del factor K y LS divergen temporalmente con el factor R de precipitaciones, lo que podría estar enmascarando el efecto de otras fuerzas en la incidencia de las tasas de erosión. Algunas de esas fuerzas podrían relacionarse con el cambio de uso de suelos, que al cambiar el tipo de uso propiciaría un aumento en la erosión, aun cuando la cobertura vegetal anual no presentase una variación significativa.
+
+Más aun, se podría estar dando un efecto acumulado, en el que los suelos al haber sido expuestos en el pasado a mayores regímenes de precipitación hayan quedado con una estructura e integridad estructural menor.
+
+
+
+
 
 # Bibliografía

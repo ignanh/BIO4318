@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/W32TeX)  (format=lualatex 2020.10.16)  8 JAN 2021 11:42
+This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/W32TeX)  (format=lualatex 2020.10.16)  8 JAN 2021 13:05
  restricted system commands enabled.
 **Final_4318.tex
 (./Final_4318.tex
@@ -686,40 +686,40 @@ Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
 ) (./Final_4318.aux)
 \openout1 = Final_4318.aux
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 89.
+(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 90.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 89.
+(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 90.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 89.
+(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 90.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 89.
+(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 90.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 89.
+(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 90.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 89.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 90.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 89.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 90.
 
 Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
 
@@ -754,7 +754,7 @@ e;script=math;language=dflt;"
 (fontspec)             \__um_luatex_copy_fontdimens: 
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(0)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 89.
+(Font)              scaled to size 10.0pt on input line 90.
 
 Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
 
@@ -798,17 +798,17 @@ e;script=math;language=dflt;"
 (fontspec)             \__um_luatex_copy_fontdimens: 
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 89.
+(Font)              scaled to size 10.0pt on input line 90.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 89.
+(Font)              `operators' in the math version `normal' on input line 90.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input 
-line 89.
+line 90.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 89.
+(Font)              `operators' in the math version `bold' on input line 90.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on input
- line 89.
+ line 90.
 
 Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
 
@@ -898,15 +898,15 @@ modern-math.otf]:mode=base;script=math;language=dflt;+ssty=1;"
 (fontspec)             21\font =0pt\relax 
 
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 89.
+(Font)              `symbols' in the math version `normal' on input line 90.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
 (Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on input
- line 89.
+ line 90.
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 89.
+(Font)              `symbols' in the math version `bold' on input line 90.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
 (Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on input
- line 89.
+ line 90.
 
 Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
 
@@ -978,42 +978,42 @@ e;script=math;language=dflt;"
 (fontspec)             \fontdimen 13\font =0pt\relax 
 
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `normal' on input line 89
+(Font)              `largesymbols' in the math version `normal' on input line 90
 .
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
 (Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on input
- line 89.
+ line 90.
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 89.
+(Font)              `largesymbols' in the math version `bold' on input line 90.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
 (Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on input
- line 89.
+ line 90.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 89.
+(Font)              scaled to size 7.0pt on input line 90.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 89.
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 89
+(Font)              scaled to size 5.0pt on input line 90.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 90
 .
 (c:/Users/ignan/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.00092pt on input line 89.
+(Font)              scaled to size 10.00092pt on input line 90.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.00064pt on input line 89.
+(Font)              scaled to size 7.00064pt on input line 90.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.00046pt on input line 89.
+(Font)              scaled to size 5.00046pt on input line 90.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 9.99893pt on input line 89.
+(Font)              scaled to size 9.99893pt on input line 90.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.99925pt on input line 89.
+(Font)              scaled to size 6.99925pt on input line 90.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.99947pt on input line 89.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 89.
+(Font)              scaled to size 4.99947pt on input line 90.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 90.
 (c:/Users/ignan/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 89.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 90.
 (c:/Users/ignan/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
@@ -1028,7 +1028,7 @@ df-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 
 ))
-Package hyperref Info: Link coloring OFF on input line 89.
+Package hyperref Info: Link coloring OFF on input line 90.
 
 (c:/Users/ignan/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.s
 ty
@@ -1044,9 +1044,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count307
 )
-LaTeX Info: Redefining \ref on input line 89.
-LaTeX Info: Redefining \pageref on input line 89.
-LaTeX Info: Redefining \nameref on input line 89.
+LaTeX Info: Redefining \ref on input line 90.
+LaTeX Info: Redefining \pageref on input line 90.
+LaTeX Info: Redefining \nameref on input line 90.
 (./Final_4318.out) (./Final_4318.out)
 \@outlinefile=\write3
 
@@ -1086,23 +1086,23 @@ LaTeX Info: Redefining \nameref on input line 89.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 12.0pt on input line 91.
+(Font)              scaled to size 12.0pt on input line 92.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 8.0pt on input line 91.
+(Font)              scaled to size 8.0pt on input line 92.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 6.0pt on input line 91.
+(Font)              scaled to size 6.0pt on input line 92.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 12.0011pt on input line 91.
+(Font)              scaled to size 12.0011pt on input line 92.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.00073pt on input line 91.
+(Font)              scaled to size 8.00073pt on input line 92.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.00055pt on input line 91.
+(Font)              scaled to size 6.00055pt on input line 92.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 11.99872pt on input line 91.
+(Font)              scaled to size 11.99872pt on input line 92.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.99915pt on input line 91.
+(Font)              scaled to size 7.99915pt on input line 92.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.99936pt on input line 91.
+(Font)              scaled to size 5.99936pt on input line 92.
 [1
 
 {c:/Users/ignan/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex
@@ -1115,79 +1115,124 @@ Missing character: There is no β (U+03B2) in font [lmroman10-regular]:+tlig;!
 Missing character: There is no β (U+03B2) in font [lmroman10-regular]:+tlig;!
 Missing character: There is no β (U+03B2) in font [lmroman10-regular]:+tlig;!
 ]
-<Final_4318_files/figure-latex/Fig1-1.pdf, id=90, 469.755pt x 325.215pt>
+<Final_4318_files/figure-latex/Fig1-1.pdf, id=94, 469.755pt x 325.215pt>
 File: Final_4318_files/figure-latex/Fig1-1.pdf Graphic file (type pdf)
 <use Final_4318_files/figure-latex/Fig1-1.pdf>
 Package luatex.def Info: Final_4318_files/figure-latex/Fig1-1.pdf  used on input
- line 182.
+ line 184.
 (luatex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 182--182
-[][]
- []
-
-[5]
-<Final_4318_files/figure-latex/Fig2-1.pdf, id=101, 469.755pt x 325.215pt>
+<Final_4318_files/figure-latex/Fig2-1.pdf, id=95, 469.755pt x 325.215pt>
 File: Final_4318_files/figure-latex/Fig2-1.pdf Graphic file (type pdf)
 <use Final_4318_files/figure-latex/Fig2-1.pdf>
 Package luatex.def Info: Final_4318_files/figure-latex/Fig2-1.pdf  used on input
- line 186.
+ line 190.
 (luatex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 186--186
-[][]
- []
-
-[6
-warning  (pdf backend): ignoring duplicate destination with the name 'figure.1'
-<./Final_4318_files/figure-latex/Fig1-1.pdf>]
-
-LaTeX Warning: Reference `table:Tabla1' on page 7 undefined on input line 189.
-
-
-Overfull \hbox (150.70491pt too wide) in paragraph at lines 195--264
+Overfull \hbox (150.70491pt too wide) in paragraph at lines 226--295
  [][] 
  []
 
-[7
+
+LaTeX Warning: Reference `table:Tabla1' on page 5 undefined on input line 297.
+
+[5] [6
+warning  (pdf backend): ignoring duplicate destination with the name 'figure.1'
+<./Final_4318_files/figure-latex/Fig1-1.pdf>] [7
 warning  (pdf backend): ignoring duplicate destination with the name 'figure.2'
 <./Final_4318_files/figure-latex/Fig2-1.pdf>] [8
 warning  (pdf backend): ignoring duplicate destination with the name 'table.1'
-] [9] [10] [11] [12] (./Final_4318.aux)
+]
+<Final_4318_files/figure-latex/Fig3-1.pdf, id=137, 469.755pt x 325.215pt>
+File: Final_4318_files/figure-latex/Fig3-1.pdf Graphic file (type pdf)
+<use Final_4318_files/figure-latex/Fig3-1.pdf>
+Package luatex.def Info: Final_4318_files/figure-latex/Fig3-1.pdf  used on input
+ line 305.
+(luatex.def)             Requested size: 469.75386pt x 325.2142pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 305--305
+[][]
+ []
+
+<Final_4318_files/figure-latex/Fig4-1.pdf, id=138, 469.755pt x 325.215pt>
+File: Final_4318_files/figure-latex/Fig4-1.pdf Graphic file (type pdf)
+<use Final_4318_files/figure-latex/Fig4-1.pdf>
+Package luatex.def Info: Final_4318_files/figure-latex/Fig4-1.pdf  used on input
+ line 309.
+(luatex.def)             Requested size: 469.75386pt x 325.2142pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 309--309
+[][]
+ []
+
+[9
+warning  (pdf backend): ignoring duplicate destination with the name 'figure.3'
+<./Final_4318_files/figure-latex/Fig3-1.pdf>]
+<Final_4318_files/figure-latex/Fig5-1.pdf, id=153, 469.755pt x 325.215pt>
+File: Final_4318_files/figure-latex/Fig5-1.pdf Graphic file (type pdf)
+<use Final_4318_files/figure-latex/Fig5-1.pdf>
+Package luatex.def Info: Final_4318_files/figure-latex/Fig5-1.pdf  used on input
+ line 313.
+(luatex.def)             Requested size: 469.75386pt x 325.2142pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 313--313
+[][]
+ []
+
+[10
+warning  (pdf backend): ignoring duplicate destination with the name 'figure.4'
+<./Final_4318_files/figure-latex/Fig4-1.pdf>]
+<Final_4318_files/figure-latex/Fig6-1.pdf, id=162, 469.755pt x 325.215pt>
+File: Final_4318_files/figure-latex/Fig6-1.pdf Graphic file (type pdf)
+<use Final_4318_files/figure-latex/Fig6-1.pdf>
+Package luatex.def Info: Final_4318_files/figure-latex/Fig6-1.pdf  used on input
+ line 317.
+(luatex.def)             Requested size: 469.75386pt x 325.2142pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 317--317
+[][]
+ []
+
+[11
+warning  (pdf backend): ignoring duplicate destination with the name 'figure.5'
+<./Final_4318_files/figure-latex/Fig5-1.pdf>] [12
+warning  (pdf backend): ignoring duplicate destination with the name 'figure.6'
+<./Final_4318_files/figure-latex/Fig6-1.pdf>] [13] [14] [15] [16] (./Final_4318
+.aux)
 Package rerunfilecheck Info: File `Final_4318.out' has not changed.
-(rerunfilecheck)             Checksum: 2941C748F9EC553A594C1FD54E8B9C18;1505.
+(rerunfilecheck)             Checksum: D75D01CCD1AF9A9D1D0A4A8BEE3AA18B;1871.
 
 LaTeX Warning: There were undefined references.
 
 )
 
 Here is how much of LuaTeX's memory you used:
- 19033 strings out of 479059
+ 19098 strings out of 479059
  156267,953878 words of node,token memory allocated
  529 words of node memory still in use:
    6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 6 attribute, 61 glue_spec,
  6 attribute_list, 1 write nodes
-   avail lists: 2:2242,3:133,4:26,5:510,6:39,7:12531,8:41,9:2553,10:14,11:941
- 37626 multiletter control sequences out of 65536+600000
- 74 fonts using 15883899 bytes
- 94i,9n,118p,2170b,341s stack positions out of 5000i,500n,10000p,200000b,200000s
+   avail lists: 2:2913,3:411,4:40,5:484,6:53,7:12531,8:41,9:2564,10:14,11:941
+ 37657 multiletter control sequences out of 65536+600000
+ 75 fonts using 15972259 bytes
+ 94i,9n,118p,2170b,343s stack positions out of 5000i,500n,10000p,200000b,200000s
 <c:/Users/ignan/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmro
 man10-bold.otf><c:/Users/ignan/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype
 /public/lm-math/latinmodern-math.otf><c:/Users/ignan/AppData/Roaming/TinyTeX/tex
 mf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf><c:/Users/ignan/AppDa
-ta/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman7-italic.otf><c:/U
-sers/ignan/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman7-
-regular.otf><c:/Users/ignan/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/pu
-blic/lm/lmroman10-italic.otf><c:/Users/ignan/AppData/Roaming/TinyTeX/texmf-dist/
-fonts/opentype/public/lm/lmroman10-regular.otf><c:/Users/ignan/AppData/Roaming/T
-inyTeX/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf><c:/Users/ignan/Ap
-pData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman12-regular.otf>
-<c:/Users/ignan/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmro
-man17-regular.otf>
-Output written on Final_4318.pdf (12 pages, 12382510 bytes).
+ta/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmmono10-regular.otf><c:/
+Users/ignan/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman7
+-italic.otf><c:/Users/ignan/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/pu
+blic/lm/lmroman7-regular.otf><c:/Users/ignan/AppData/Roaming/TinyTeX/texmf-dist/
+fonts/opentype/public/lm/lmroman10-italic.otf><c:/Users/ignan/AppData/Roaming/Ti
+nyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf><c:/Users/ignan/
+AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf><
+c:/Users/ignan/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmrom
+an12-regular.otf><c:/Users/ignan/AppData/Roaming/TinyTeX/texmf-dist/fonts/openty
+pe/public/lm/lmroman17-regular.otf>
+Output written on Final_4318.pdf (16 pages, 12465398 bytes).
 
-PDF statistics: 285 PDF objects out of 1000 (max. 8388607)
- 234 compressed objects within 3 object streams
- 109 named destinations out of 1000 (max. 131072)
- 105 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 342 PDF objects out of 1000 (max. 8388607)
+ 276 compressed objects within 3 object streams
+ 119 named destinations out of 1000 (max. 131072)
+ 113 words of extra memory for PDF output out of 10000 (max. 100000000)
 
